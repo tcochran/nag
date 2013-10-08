@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'shotgun'
+gem 'mongo'
+gem 'bson'
+gem 'bson_ext'
+gem 'rspec'
+gem 'active_support'

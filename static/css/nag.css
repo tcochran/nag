@@ -1,0 +1,69 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.container { background-color: yellow; padding-top:30px; }
+
+body {
+    font-family: "Helvetica Neue";
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue";
+    /*font-weight: 500;*/
+}
+
+body { background-color: yellow; }
+.jumbotron { 
+    background-color: #ffffef; 
+    font-size: 18px;
+    padding: 20px;
+}
+
+.jumbotron h1 { 
+    margin: 0 0 10px 0; 
+}
+label { margin-right: 10px; font-weight: 400;}
+input { 
+    color: dodgerblue; border: 1px solid #DDD; padding: 4px 10px; font-weight: 500;
+    margin-right: 14px; 
+    }
+
+a {
+    margin-right: 14px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+ul .time {
+    /*width: 200px;*/
+    /*display: inline-block;*/
+    border-right: 1px solid #CCC;
+    text-align: right;
+    padding: 0 10px 0 0;
+}
+
+ul .deadline {
+    width: 200px;
+    display: inline-block;
+    padding: 0 0 0 10px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-weight: normal;
+}
+input :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+}
+input ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}
