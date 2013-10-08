@@ -2,6 +2,7 @@ require 'sinatra'
 require 'rubygems'
 require 'mongo'
 require 'json'
+require 'uri'
 require_relative "app/date_parser"
 
 include Mongo
@@ -9,9 +10,26 @@ include Mongo
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
 
+def get_connection
+  return @db_connection if @db_connection
+  db = URI.parse(ENV['MONGOHQ_URL'])
+  db_name = db.path.gsub(/^\//, '')
+  @db_connection = Mongo::Connection.new(db.host, db.port).db(db_name)
+  @db_connection.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)
+  @db_connection
+end
+
+
 before do 
-    db = MongoClient.new().db("nag")
+    puts settings.environment 
+    if (settings.environment == "development") 
+        db = MongoClient.new().db("nag")
+    else
+        db = get_connection
+    end
+
     @nag_collection = db["nags"]
+
 end
 
 get '/' do
