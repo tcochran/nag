@@ -2,6 +2,8 @@ require 'sinatra'
 require 'rubygems'
 require 'mongo'
 require 'json'
+require_relative "app/date_parser"
+
 include Mongo
 
 set :public_folder, File.dirname(__FILE__) + '/static'
@@ -23,6 +25,7 @@ end
 
 post '/tasks' do 
     data = JSON.parse request.body.read
+    p data
+    data["deadline_date"] = DateParser.new.parse data["deadline"] 
     @nag_collection.insert(data)
-    
 end
