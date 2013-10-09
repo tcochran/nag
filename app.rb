@@ -11,6 +11,7 @@ set :public_folder, File.dirname(__FILE__) + '/static'
 set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
 
 def get_connection
+  p "USING MONGOHQ"
   return @db_connection if @db_connection
   db = URI.parse(ENV['MONGOHQ_URL'])
   db_name = db.path.gsub(/^\//, '')
@@ -21,6 +22,7 @@ end
 
 
 before do 
+    p settings.environment
     db = settings.environment == "development" ? db = get_connection : MongoClient.new().db("nag")
     @nag_collection = db["nags"]
 end

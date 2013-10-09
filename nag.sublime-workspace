@@ -519,6 +519,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "static/templates/nag.html",
+			"settings":
+			{
+				"buffer_size": 2396,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/js/nag.js",
+			"settings":
+			{
+				"buffer_size": 1552,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -863,8 +879,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "static/templates/nag.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2040,
+								2040
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 131.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "static/js/nag.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1552,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1426,
+								1426
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 41.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -923,6 +998,18 @@
 		"selected_items":
 		[
 			[
+				"",
+				"static/js/nag.js"
+			],
+			[
+				"js",
+				"static/js/nag.js"
+			],
+			[
+				"html",
+				"static/templates/nag.html"
+			],
+			[
 				"map",
 				"static/javascript/map.js"
 			],
@@ -933,10 +1020,6 @@
 			[
 				"servi",
 				"lib/services.py"
-			],
-			[
-				"",
-				"Find Results"
 			],
 			[
 				"con",
@@ -1425,14 +1508,6 @@
 			[
 				"qmin",
 				"~/Work/devtrac2/static/javascript/lib/q.min.js"
-			],
-			[
-				"dire",
-				"static/javascript/directives.js"
-			],
-			[
-				"u",
-				"static/javascript/utilities.js"
 			]
 		],
 		"width": 0.0
@@ -1444,7 +1519,7 @@
 		[
 			[
 				"",
-				"~/Work/devtrac2_provisioning/devtrac_provisioning.sublime-project"
+				"~/Work/devtrac2/devtrac2.sublime-project"
 			]
 		],
 		"width": 380.0
