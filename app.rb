@@ -21,15 +21,8 @@ end
 
 
 before do 
-    puts settings.environment 
-    if (settings.environment == "development") 
-        db = MongoClient.new().db("nag")
-    else
-        db = get_connection
-    end
-
+    db = settings.environment == "development" ? db = get_connection : MongoClient.new().db("nag")
     @nag_collection = db["nags"]
-
 end
 
 get '/' do

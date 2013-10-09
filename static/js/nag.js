@@ -26,3 +26,34 @@ angular.module('nag', ["ngResource"]).controller('NagCtrl', function($scope, $re
 
     loadTask();
 });
+
+$(".clickme").click(function() {
+
+    if (window.webkitNotifications) {
+      console.log("Notifications are supported!");
+    }
+    else {
+      console.log("Notifications are not supported for this Browser/OS version yet.");
+    }
+
+    if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
+        // function defined in step 2
+        window.webkitNotifications.createNotification(
+            'icon.png', 'Notification Title', 'Notification content...');
+      } else {
+        window.webkitNotifications.requestPermission();
+      }
+
+
+})
+
+
+document.querySelector('.clickme2').addEventListener('click', function() {
+  if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
+    // function defined in step 2
+    window.webkitNotifications.createNotification(
+        '', 'Notification Title', 'Notification content...');
+  } else {
+    window.webkitNotifications.requestPermission();
+  }
+}, false);
