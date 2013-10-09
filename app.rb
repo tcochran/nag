@@ -23,7 +23,7 @@ end
 
 before do 
     p settings.environment
-    db = settings.environment == "development" ? db = get_connection : MongoClient.new().db("nag")
+    db = settings.environment == :development ? MongoClient.new().db("nag") : get_connection
     @nag_collection = db["nags"]
 end
 
