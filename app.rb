@@ -4,6 +4,7 @@ require 'mongo'
 require 'json'
 require 'uri'
 require_relative "app/date_parser"
+require_relative "app/nag_mongo"
 
 include Mongo
 
@@ -22,9 +23,9 @@ end
 
 
 before do 
-    p settings.environment
     db = settings.environment == :development ? MongoClient.new().db("nag") : get_connection
     @nag_collection = db["nags"]
+    @nag_mongo = NagMongoClient.new(settings.environment)
 end
 
 get '/' do
@@ -38,7 +39,18 @@ end
 
 post '/tasks' do 
     data = JSON.parse request.body.read
-    p data
     data["deadline_date"] = DateParser.new.parse data["deadline"] 
+    data["id"] = @nag_mongo.next_task_id
     @nag_collection.insert(data)
+end
+
+post '/tasks/:id' do |id|
+  nag = @nag_collection.find_one(id: id.to_i)
+  data = JSON.parse request.body.read
+  data.delete('_id')
+  @nag_collection.update({id: id.to_i}, data)
+end
+
+get '/tasks/:id' do |id|
+  @nag_collection.find_one('id' => id.to_i).to_json
 end

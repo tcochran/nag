@@ -29,10 +29,15 @@ input {
     margin-right: 14px; 
     }
 
+
+
 a {
     margin-right: 14px;
 }
 
+ul li {
+    line-height: 32px;
+}
 ul {
     list-style-type: none;
 }
@@ -42,17 +47,24 @@ ul {
     padding: 0;
 }
 ul .time {
-    /*width: 200px;*/
-    /*display: inline-block;*/
-    border-right: 1px solid #CCC;
     text-align: right;
-    padding: 0 10px 0 0;
+    padding: 0;
+    margin-right: 6px;
+    font-size: 22px;
+    /*font-weight: normal;*/
 }
 
 ul .deadline {
-    width: 200px;
     display: inline-block;
-    padding: 0 0 0 10px;
+    padding: 0;
+    margin-right: 24px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+ul li.finished .deadline, ul li.finished .time {
+    text-decoration: line-through;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -67,3 +79,21 @@ input ::-moz-placeholder { /* Mozilla Firefox 19+ */
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    #999;
 }
+
+.btn-default {
+    color: #333;
+    background-color: transparent;
+    border-color: #ccc;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 3px 8px;
+}
+
+.btn-default:hover {
+
+    background-color: transparent;
+    border-color: dodgerblue;
+    color: dodgerblue;
+    /*font-weight: normal;*/
+}
+

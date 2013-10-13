@@ -10,7 +10,7 @@
     <title>nag</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    
     <link href="/css/nag.css" rel="stylesheet">
     <script src="/js/lib/angular.min.js"></script>
   </head>
@@ -45,15 +45,14 @@
       <div ng-show="tasks.length > 0" class="jumbotron" ng-cloak>
           <h2>things I still have to do</h2>
           <ul>
-          <li ng-repeat="task in tasks">
-            <span class="time">{{task.task}}</span><span class="deadline">{{task.deadline}}</span>
+          <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks" class="{{task.finished ? 'finished': ''}}">
+            <span class="time" >{{task.task}}</span>
+            <span class="deadline">by {{task.deadline}}</span>
+
+            <button ng-show="!task.finished && selected" type="button" ng-click="taskDone({{task.id}});" class="btn btn-default btn-finished">finished</button>
+            <button ng-show="selected" type="button" class="btn btn-default btn-delete">delete</button>
           </li>
           </ul>
-      </div>
-
-      <div class="jumbotron">
-        <a class="clickme" href="#">click me</a>
-        <a class="clickme2" href="#">click me</a>
       </div>
     </div>
     <script src="/js/lib/angular-resource.min.js"></script>
