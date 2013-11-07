@@ -5,12 +5,17 @@ angular.module('nag', ["ngResource"]).controller('NagCtrl', function($scope, $re
             method: 'GET',
             isArray: true
         },
-        taskdone: {method:'POST', params:{finished:true}},
 
         'get': {
             method: 'GET',
             isArray: false
         },
+
+        'delete': {
+            method: 'DELETE'
+        },
+
+
     })
 
     $scope.submit = function() {
@@ -19,27 +24,47 @@ angular.module('nag', ["ngResource"]).controller('NagCtrl', function($scope, $re
             deadline: $scope.deadline
         });
 
-        task.$save(function() {
-            loadTask();
-        })
+        task.$save(loadTasks);
     };
 
-    var loadTask = function() {
-        Task.getAll({}, function(result) {
-            $scope.tasks = result;
+    var loadTasks = function() {
+        Task.getAll({}, function(tasks) {
+            $scope.tasks = tasks;
         });
-    }
+    };
 
-    loadTask();
+    
 
+    var loadExpiredTasks = function() {
+        Task.getAll({deadline: new Date()}, function(tasks) {
+            $scope.expiredTasks = tasks;
+        });
+    };
+
+    var poll = function () { 
+        loadExpiredTasks();
+        $timeout(function() {
+            poll();
+        }, 5000);
+    };
+    poll();
+    loadTasks();
+
+    
     $scope.taskDone = function(taskId) {
       Task.get({taskId: taskId}, function(task) {
         task.finished = true;
-        task.$save(function() { loadTask();  })
-
+        console.log(task);
+        task.$save(loadTasks);
       }); 
-
     }
+
+    $scope.taskDelete = function(taskId) {
+      Task.delete({taskId: taskId}, loadTasks); 
+    }
+
+}).controller('ExpiredTasksCtrl', function () {
+    $('#myModal').modal({});
 
 });
   

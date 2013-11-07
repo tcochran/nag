@@ -2,10 +2,15 @@
   display: none !important;
 }
 
-.container { background-color: yellow; padding-top:30px; }
+.container { background-color: yellow; padding-top:20px; }
+
+@font-face {
+  font-family: 'adelle';
+  src: url('font/.ttf');
+}
 
 body {
-    font-family: "Helvetica Neue";
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -18,19 +23,23 @@ body { background-color: yellow; }
     background-color: #ffffef; 
     font-size: 18px;
     padding: 20px;
+    margin-bottom: 16px;
 }
 
-.jumbotron h1 { 
-    margin: 0 0 10px 0; 
+.jumbotron .title { 
+    margin: 0 0 0px 0px; 
+    font-size: 52px;
+}
+
+.container .jumbotron.title-bar {
+    padding-left: 40px;
+    padding-top: 10px;
 }
 label { margin-right: 10px; font-weight: 400;}
 input { 
     color: dodgerblue; border: 1px solid #DDD; padding: 4px 10px; font-weight: 500;
     margin-right: 14px; 
     }
-
-
-
 a {
     margin-right: 14px;
 }
@@ -40,6 +49,16 @@ ul li {
 }
 ul {
     list-style-type: none;
+}
+
+.modal .modal-body button:hover {
+    color: magenta;
+    border-color: magenta;
+}
+
+.modal h2 {
+    color: magenta;
+    font-weight: normal;
 }
 
 ul {

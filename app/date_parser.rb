@@ -3,7 +3,7 @@ require 'active_support/core_ext/time/calculations'
 
 class DateParser 
 
-    def initialize(current_date = Date.today)
+    def initialize(current_date = Time.now)
         @current_date = current_date
     end
 
@@ -11,6 +11,8 @@ class DateParser
         text = text.downcase
         date = parse_day_of_week(text)
         date = parse_in_minutes(text) if date == nil
+        date = parse_days_from_now(text) if date == nil
+        date = parse_phrases(text) if date == nil
         date
     end
 
@@ -28,7 +30,33 @@ class DateParser
         end
 
         if match = /in (\d\d?\d?) minutes/.match(text) 
-            return @current_date.advance(minutes: match[1].to_i)    
+            return @current_date.advance(minutes: match[1].to_i)
+        end
+        nil
+    end
+
+    def parse_days_from_now text
+        if match = /^(\d) day from now$/.match(text)
+            return @current_date.advance(days: match[1].to_i).to_time
+        end
+
+        if match = /^(\d\d?\d?) days from now$/.match(text) 
+            return @current_date.advance(days: match[1].to_i).to_time 
+        end
+        nil
+    end
+
+    def parse_phrases text 
+        if match = /^next week$/.match(text)
+            return @current_date.advance(weeks: 1).to_time
+        end
+
+        if match = /^next month$/.match(text)
+            return @current_date.advance(months: 1).to_time
+        end
+
+        if match = /^tomorrow$/.match(text)
+            return @current_date.advance(days: 1).to_time
         end
         nil
     end

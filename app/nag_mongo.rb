@@ -6,7 +6,13 @@ class NagMongoClient
 
     include Mongo
     def initialize(env)
-        @db = env == :development ? MongoClient.new().db("nag") : get_connection
+        if env == :development
+          @db = MongoClient.new().db("nag")
+        elsif env == :test
+          @db = MongoClient.new().db("nag_test")
+        else
+          @db = get_connection
+        end
 
         def get_connection
           p "USING MONGOHQ"
@@ -20,8 +26,13 @@ class NagMongoClient
 
     end
 
-    def nags
-        @db['nags']
+    def nags(query)
+        if (query[:deadline])
+          puts query[:deadline].utc()
+          @db['nags'].find({deleted: false, "deadline_date" => {"$lt" => query[:deadline].utc} }, :sort => {'deadline_date' => -1}).to_a
+        else 
+          @db['nags'].find({deleted: false}, :sort => {'deadline_date' => -1}).to_a
+        end
     end
 
     def init 
@@ -32,6 +43,10 @@ class NagMongoClient
           _id: "taskId",
           seq: 0
        })
+    end
+
+    def col
+      @db['nags']
     end
 
     def next_task_id

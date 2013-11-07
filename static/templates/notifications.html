@@ -1,0 +1,22 @@
+<div class="modal fade" id="myModal" ng-controller='ExpiredTasksCtrl'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">You are late for these tasks <br/><small>what happened?</small></h2>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li ng-repeat='task in expiredTasks' class="{{task.finished ? 'finished': ''}}">
+            <span class="time" >{{task.task}}</span>
+            <span class="deadline">by {{task.deadline}}</span>
+            <button type="button" ng-click="taskDelay(task.id);" class="btn btn-default btn-finished">+ 1 day</button>
+            <button type="button" ng-click="taskDone(task.id);" class="btn btn-default btn-finished">finished</button>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" disabled="disabled" ng-disabled="expiredTasks.length == 0">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
