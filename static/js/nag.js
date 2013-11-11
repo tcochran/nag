@@ -1,6 +1,6 @@
 Nag = {}
 Nag.Task = function(taskResource) {
-    
+
     angular.extend(taskResource, Nag.Task.prototype);
     taskResource.deadlineDate = new Date(taskResource.deadline_date);
     taskResource.deadlineInWords = taskResource.calculateDeadlineInWords();
@@ -35,8 +35,7 @@ Nag.Task.prototype.calculateDeadlineInWords = function () {
         else if (days <= 0)
             return "overdue"
         else
-            return days + " minutes ";
-
+            return days + " days ";
     }
     return "booo";
 };
@@ -53,8 +52,6 @@ Nag.TaskCollection.fromJson = function(tasksJson){
 
     var thisMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     var nextMonth = new Date(thisMonth.getFullYear(), thisMonth.getMonth() + 2, 0);
-
-    console.log(thisMonth, nextMonth);
 
     collection.expiredTasks = function () {
         return Nag.TaskCollection.expiredTasks(this); 
