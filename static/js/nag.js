@@ -153,6 +153,8 @@ angular.module('nag', ["ngResource"]).controller('NagCtrl', function($scope, $re
       task.$save(); 
     }
 
+    // var url = "https://accounts.google.com/o/oauth2/auth?reponse_type=token&client_id=912357933222.apps.googleusercontent.com"
+
 }).controller('ExpiredTasksCtrl', function ($scope) {
     $scope.$watch('expiredTasks', function(tasks) {
         if (tasks == null)
