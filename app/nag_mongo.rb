@@ -5,6 +5,7 @@ require 'sinatra'
 class NagMongoClient
 
     include Mongo
+    
     def initialize(env)
         if env == :development
           @db = MongoClient.new().db("nag")
@@ -24,6 +25,10 @@ class NagMongoClient
           @db_connection
         end
 
+
+        if @db['counters'].find('_id' => 'taskId').count() == 0
+          @db['counters'].insert({'_id' => 'taskId', seq: 0})
+        end
     end
 
     def nags(query)
@@ -50,6 +55,9 @@ class NagMongoClient
     end
 
     def next_task_id
+
+
+
         result = @db['counters'].find_and_modify(
             {
                 query: { _id: 'taskId' },
