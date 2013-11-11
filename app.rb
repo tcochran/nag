@@ -65,6 +65,7 @@ post '/tasks/:id' do |id|
     data['deadline_date'] = Time.parse(data['deadline_date'])
     puts data
     @nag_collection.update({id: id.to_i}, data)
+    ""
 end
 
 get '/tasks/:id' do |id|

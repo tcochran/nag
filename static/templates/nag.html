@@ -46,20 +46,71 @@
         </form>
       </div>
 
-      <div ng-show="tasks.length > 0" class="jumbotron" ng-cloak>
-          <ul>
-          <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-            <span class="time" >{{task.task}}</span>
-            <span class="deadline">by {{task.deadline}}</span>
+      <section ng-show="tasks.length > 0" class="jumbotron" ng-cloak id='task-section'>
+          <div ng-show='tasks.today().length > 0'>
+            <h2>today</h2>
+            <ul>
+              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.today() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
+                <span class="deadline">{{task.deadlineInWords}}</span>
+                <span class="time" >{{task.task}}</span>
+                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
+              </li>
+            </ul>
+          </div>
+          <div ng-show='tasks.thisWeek().length > 0'>
+            <h2>this week</h2>
+            <ul>
+              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.thisWeek() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
+                <span class="deadline">{{task.deadlineInWords}}</span>
+                <span class="time" >{{task.task}}</span>
+                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
+              </li>
+            </ul>
+          </div>
+          <div ng-show='tasks.nextWeek().length > 0'>
+            <h2>next week</h2>
+            <ul>
+              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextWeek() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
+                <span class="deadline">{{task.deadlineInWords}}</span>
+                <span class="time" >{{task.task}}</span>
+                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
+              </li>
+            </ul>
+          </div>
 
-            <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task.id);" class="btn btn-default btn-finished">finished</button>
-            <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task.id);">delete</button>
-          </li>
+          <div ng-show='tasks.thisMonth().length > 0'>
+            <h2>this month</h2>
+            <ul>
+              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.thisMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
+                <span class="deadline">{{task.deadlineInWords}}</span>
+                <span class="time" >{{task.task}}</span>
+                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
+              </li>
+            </ul>
+          </div>
+          <div ng-show='tasks.nextMonth().length > 0'>
+            <h2>next month</h2>
+            <ul>
+              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
+                <span class="deadline">{{task.deadlineInWords}}</span>
+                <span class="time" >{{task.task}}</span>
+                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
+              </li>
+            </ul>
+          </div>
+
+
+
           </ul>
-      </div>
+      </section>
     </div>
-    <script src="http://code.angularjs.org/1.2.0-rc.3/angular.min.js"></script>
-    <script src="http://code.angularjs.org/1.2.0-rc.3/angular-animate.min.js"></script>
+    <script src="/js/lib/angular.min.js"></script>
+    <script src="/js/lib/angular-animate.min.js"></script>
     <script src="/js/lib/angular-resource.min.js"></script>
     <script src="/js/lib/jquery-2.0.3.min.js"></script>
     <script src="/js/nag.js"></script>

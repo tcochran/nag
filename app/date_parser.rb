@@ -13,6 +13,7 @@ class DateParser
         date = parse_in_minutes(text) if date == nil
         date = parse_days_from_now(text) if date == nil
         date = parse_phrases(text) if date == nil
+        throw "Unable to parse date" if (date == nil)
         date
     end
 

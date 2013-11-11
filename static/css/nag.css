@@ -11,6 +11,7 @@
 
 body {
     font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -69,20 +70,38 @@ ul .time {
     text-align: right;
     padding: 0;
     margin-right: 6px;
-    font-size: 22px;
-    /*font-weight: normal;*/
+    font-size: 20px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+#task-section h2 {
+    display: block;
+    border-bottom: 1px solid #DDD;
+    font-size: 13px;
+    padding-left: 0px;
+    font-weight: normal;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    color: #AAA;
+}
+
+#task-section ul {
+    margin-left: 4px;
 }
 
 ul .deadline {
     display: inline-block;
     padding: 0;
-    margin-right: 24px;
     font-size: 16px;
-    font-style: italic;
+    width: 160px;
+    /*font-style: italic;*/
 }
 
 
-ul li.finished .deadline, ul li.finished .time {
+ul li.finished .time {
     text-decoration: line-through;
 }
 
@@ -109,10 +128,12 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 .btn-default:hover {
-
     background-color: transparent;
     border-color: dodgerblue;
     color: dodgerblue;
     /*font-weight: normal;*/
 }
 
+.modal-backdrop.in {
+    opacity: 0.7;
+}

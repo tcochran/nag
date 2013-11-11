@@ -4,8 +4,88 @@
 		"selected_items":
 		[
 			[
+				"de",
+				"deadlineInWords"
+			],
+			[
+				"min",
+				"minutes"
+			],
+			[
+				"next",
+				"nextMonth"
+			],
+			[
+				"nex",
+				"nextWeek"
+			],
+			[
+				"this",
+				"thisMonth"
+			],
+			[
+				"ne",
+				"nextWeekEnd"
+			],
+			[
+				"thi",
+				"thisMonth"
+			],
+			[
+				"date",
+				"deadlineDate"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"pr",
+				"prototype"
+			],
+			[
+				"task",
+				"taskResource"
+			],
+			[
+				"prp",
+				"prototype"
+			],
+			[
+				"load",
+				"loadTaskPromise"
+			],
+			[
 				"dea",
-				"deadline_date"
+				"deadlineDate"
+			],
+			[
+				"tasks",
+				"tasksJson"
+			],
+			[
+				"Task",
+				"TaskCollection"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"bor",
+				"border-color"
+			],
+			[
+				"di",
+				"disabled	Attr"
 			],
 			[
 				"mn",
@@ -28,16 +108,8 @@
 				"margin-bottom"
 			],
 			[
-				"paddin",
-				"padding-top"
-			],
-			[
 				"tas",
 				"taskId"
-			],
-			[
-				"font",
-				"font-style"
 			],
 			[
 				"lo",
@@ -46,10 +118,6 @@
 			[
 				"tex",
 				"text-decoration"
-			],
-			[
-				"task",
-				"taskid"
 			],
 			[
 				"nag",
@@ -62,10 +130,6 @@
 			[
 				"dow",
 				"downcase"
-			],
-			[
-				"min",
-				"minutes"
 			],
 			[
 				"f",
@@ -114,10 +178,6 @@
 			[
 				"kam",
 				"kampalaNorthJson"
-			],
-			[
-				"di",
-				"district"
 			],
 			[
 				"gu",
@@ -198,10 +258,6 @@
 			[
 				"base",
 				"base_dir	statement"
-			],
-			[
-				"pr",
-				"property	New Property"
 			],
 			[
 				"sink",
@@ -458,154 +514,19 @@
 			[
 				"pro",
 				"prototype"
-			],
-			[
-				"data",
-				"allData"
-			],
-			[
-				"re",
-				"resolve"
-			],
-			[
-				"add",
-				"addFunctions"
-			],
-			[
-				"pat",
-				"patiko_location"
-			],
-			[
-				"pa",
-				"patiko_location"
-			],
-			[
-				"gulu",
-				"gulu_location"
-			],
-			[
-				"locat",
-				"location_hash"
-			],
-			[
-				"for",
-				"for	for (…) {…}"
-			],
-			[
-				"back",
-				"background-color"
-			],
-			[
-				"mess",
-				"message"
-			],
-			[
-				"z",
-				"zIndex"
-			],
-			[
-				"sel",
-				"self"
-			],
-			[
-				"po",
-				"popup"
-			],
-			[
-				"featu",
-				"features"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "app.rb",
+			"contents": "Searching 31 files for \"expired_tasks\" (case sensitive)\n\n/Users/Thoughtworker/Work/nag/static/js/nag.js:\n   38      var loadExpiredTasks = function() {\n   39          Task.get({deadline: new Date()}, function(tasks) {\n   40:             $scope.expired_tasks = tasks;\n   41          });\n   42      };\n\n/Users/Thoughtworker/Work/nag/static/templates/nag.html:\n   27        </div>\n   28  \n   29:       <div class=\"jumbotron\" ng-if='expired_tasks.length > 0' > \n   30          <h2 class='title'>Tasks pass your deadline</h1>\n   31          <ul>\n   32:           <li ng-repeat='task in expired_tasks'>{{task.task}} - {{task.deadline}}</li>\n   33          </ul>\n   34        </div>\n\n/Users/Thoughtworker/Work/nag/static/templates/notifications.html:\n    8        <div class=\"modal-body\">\n    9          <ul>\n   10:           <li ng-repeat='task in expired_tasks'></li>\n   11  \n   12  \n\n4 matches across 3 files\n\n\nSearching 31 files for \"expired_tasks\" (case sensitive)\n\n/Users/Thoughtworker/Work/nag/static/js/nag.js:\n   38      var loadExpiredTasks = function() {\n   39          Task.get({deadline: new Date()}, function(tasks) {\n   40:             $scope.expired_tasks = tasks;\n   41          });\n   42      };\n\n/Users/Thoughtworker/Work/nag/static/templates/nag.html:\n   30          <h2 class='title'>Tasks pass your deadline</h1>\n   31          <ul>\n   32:           <li ng-repeat='task in expired_tasks'>{{task.task}} - {{task.deadline}}</li>\n   33          </ul>\n   34        </div>\n\n/Users/Thoughtworker/Work/nag/static/templates/notifications.html:\n    8        <div class=\"modal-body\">\n    9          <ul>\n   10:           <li ng-repeat='task in expired_tasks'></li>\n   11  \n   12  \n\n3 matches across 3 files\n\n\nSearching 31 files for \"expired_tasks\" (case sensitive)\n\n/Users/Thoughtworker/Work/nag/static/js/nag.js:\n   38      var loadExpiredTasks = function() {\n   39          Task.get({deadline: new Date()}, function(tasks) {\n   40:             $scope.expired_tasks = tasks;\n   41          });\n   42      };\n\n/Users/Thoughtworker/Work/nag/static/templates/notifications.html:\n    8        <div class=\"modal-body\">\n    9          <ul>\n   10:           <li ng-repeat='task in expired_tasks'></li>\n   11  \n   12  \n\n2 matches across 2 files\n\n\nSearching 31 files for \"expired_tasks\" (case sensitive)\n\n/Users/Thoughtworker/Work/nag/static/templates/notifications.html:\n    8        <div class=\"modal-body\">\n    9          <ul>\n   10:           <li ng-repeat='task in expired_tasks'></li>\n   11  \n   12  \n\n1 match in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 1848,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/nag_mongo.rb",
-			"settings":
-			{
-				"buffer_size": 1549,
+				"buffer_size": 2523,
 				"line_ending": "Unix",
-				"name": "class MongoClient"
-			}
-		},
-		{
-			"file": "spec/date_parser_spec.rb",
-			"settings":
-			{
-				"buffer_size": 2308,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Gemfile",
-			"settings":
-			{
-				"buffer_size": 236,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "socketserver.js",
-			"settings":
-			{
-				"buffer_size": 231,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "static/css/bootstrap-theme.min.css",
-			"settings":
-			{
-				"buffer_size": 14996,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "static/js/nag.js",
-			"settings":
-			{
-				"buffer_size": 1425,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/date_parser.rb",
-			"settings":
-			{
-				"buffer_size": 1886,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "spec/mongo_spec.rb",
-			"settings":
-			{
-				"buffer_size": 543,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "static/css/nag.css",
-			"settings":
-			{
-				"buffer_size": 1983,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "static/templates/notifications.html",
-			"settings":
-			{
-				"buffer_size": 710,
-				"line_ending": "Unix"
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
@@ -620,7 +541,7 @@
 			"file": "static/templates/nag.html",
 			"settings":
 			{
-				"buffer_size": 3054,
+				"buffer_size": 6026,
 				"line_ending": "Unix"
 			}
 		}
@@ -656,15 +577,22 @@
 	},
 	"file_history":
 	[
-		"/Users/Thoughtworker/Work/nag/static/templates/nag.html",
-		"/Users/Thoughtworker/Work/nag/websocket_server.rb",
 		"/Users/Thoughtworker/Work/nag/static/js/nag.js",
-		"/Users/Thoughtworker/Work/nag/websocket.ru",
-		"/Users/Thoughtworker/Work/nag/static/css/nag.css",
-		"/Users/Thoughtworker/Work/nag/spec/date_parser_spec.rb",
-		"/Users/Thoughtworker/Work/nag/app/date_parser.rb",
-		"/Users/Thoughtworker/Work/nag/app.rb",
+		"/Users/Thoughtworker/Work/nag/app/nag_mongo.rb",
+		"/Users/Thoughtworker/Work/nag/static/css/bootstrap-theme.min.css",
+		"/Users/Thoughtworker/Work/nag/socketserver.js",
 		"/Users/Thoughtworker/Work/nag/Gemfile",
+		"/Users/Thoughtworker/Work/nag/.gitignore",
+		"/Users/Thoughtworker/Work/nag/app.rb",
+		"/Users/Thoughtworker/Work/nag/static/css/nag.css",
+		"/Users/Thoughtworker/Work/nag/static/templates/notifications.html",
+		"/Users/Thoughtworker/Work/nag/static/templates/nag.html",
+		"/Users/Thoughtworker/Work/nag/app/date_parser.rb",
+		"/Users/Thoughtworker/Work/nag/spec/mongo_spec.rb",
+		"/Users/Thoughtworker/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Thoughtworker/Work/nag/websocket_server.rb",
+		"/Users/Thoughtworker/Work/nag/websocket.ru",
+		"/Users/Thoughtworker/Work/nag/spec/date_parser_spec.rb",
 		"/Users/Thoughtworker/Work/devtrac2/monitor.html",
 		"/Users/Thoughtworker/Work/devtrac2/templates/dashboard.html",
 		"/Users/Thoughtworker/Work/devtrac2/db/import_data/merge_district_indicators.py",
@@ -744,7 +672,6 @@
 		"/Users/Thoughtworker/Work/devtrac2/templates/spikes/layout.html",
 		"/Users/Thoughtworker/Work/devtrac2/features/ui_steps.py",
 		"/Users/Thoughtworker/Work/devtrac2/screenshot_09-26-10-10:10:04:53.png",
-		"/Users/Thoughtworker/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/Thoughtworker/Work/devtrac2/static/javascript/lib/leaflet.js",
 		"/Users/Thoughtworker/Work/devtrac2/features/indicator_steps.py",
 		"/Users/Thoughtworker/Work/devtrac2/db/merge_indicators.py",
@@ -777,13 +704,7 @@
 		"/Users/Thoughtworker/Work/devtrac2/db/import_districts.py",
 		"/Users/Thoughtworker/Work/devtrac2/db/uganda_districts_2011.json",
 		"/Users/Thoughtworker/Work/devtrac2/lib/data_models.py",
-		"/Users/Thoughtworker/Work/devtrac2/static/javascript/version.json",
-		"/Users/Thoughtworker/Work/devtrac2/db/uganda_districts_2011_centroids.json",
-		"/Users/Thoughtworker/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
-		"/Users/Thoughtworker/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Users/Thoughtworker/Work/devtrac2/templates/index.html",
-		"/Users/Thoughtworker/Work/devtrac2/static/javascript/spikes/directives.js",
-		"/Users/Thoughtworker/Work/devtrac2/static/templates/list.html"
+		"/Users/Thoughtworker/Work/devtrac2/static/javascript/version.json"
 	],
 	"find":
 	{
@@ -818,6 +739,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"h2",
+			"id",
+			"webkit",
+			"expired_tasks",
 			"ng-cloak",
 			"puts",
 			"console.log",
@@ -941,11 +866,7 @@
 			"ngshow",
 			"inline",
 			"q.min",
-			"console.log",
-			"found district data",
-			"found district data ",
-			"routeProvider",
-			"unpr"
+			"console.log"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -968,326 +889,93 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1848,
+						"buffer_size": 2523,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										244,
+										257
+									],
+									[
+										429,
+										442
+									],
+									[
+										581,
+										594
+									],
+									[
+										842,
+										855
+									],
+									[
+										1151,
+										1164
+									],
+									[
+										1388,
+										1401
+									],
+									[
+										1649,
+										1662
+									],
+									[
+										1958,
+										1971
+									],
+									[
+										2180,
+										2193
+									],
+									[
+										2467,
+										2480
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								867,
-								867
+								2467,
+								2467
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 285.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/nag_mongo.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1549,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								679,
-								679
-							]
-						],
-						"settings":
-						{
-							"auto_name": "class MongoClient",
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "spec/date_parser_spec.rb",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2308,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Gemfile",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 236,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								205,
-								205
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "socketserver.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 231,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								231,
-								231
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "static/css/bootstrap-theme.min.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "static/js/nag.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1425,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1417,
-								1417
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 316.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/date_parser.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1886,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								166,
-								166
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "spec/mongo_spec.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 543,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								340,
-								340
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "static/css/nag.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1983,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								386,
-								386
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "static/templates/notifications.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 710,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								663,
-								663
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
 					"file": "static/js/lib/bootstrap.min.js",
 					"semi_transient": false,
 					"settings":
@@ -1314,20 +1002,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 2,
 					"file": "static/templates/nag.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3054,
+						"buffer_size": 6026,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								526,
-								526
+								2117,
+								2117
 							]
 						],
 						"settings":
@@ -1337,7 +1025,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 463.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1401,19 +1089,59 @@
 		[
 			[
 				"",
+				"static/js/nag.js"
+			],
+			[
+				"nag",
+				"static/templates/nag.html"
+			],
+			[
+				"nag.js",
+				"static/js/nag.js"
+			],
+			[
+				"date",
+				"app/date_parser.rb"
+			],
+			[
+				"css",
+				"static/css/nag.css"
+			],
+			[
+				"nagcss",
+				"static/css/nag.css"
+			],
+			[
+				"html",
 				"static/templates/notifications.html"
+			],
+			[
+				"nags",
+				"static/js/nag.js"
+			],
+			[
+				"nag.css",
+				"static/css/nag.css"
+			],
+			[
+				"not",
+				"static/templates/notifications.html"
+			],
+			[
+				"nah",
+				"static/templates/nag.html"
+			],
+			[
+				"app",
+				"app.rb"
+			],
+			[
+				"na",
+				"static/js/nag.js"
 			],
 			[
 				"js",
 				"static/js/nag.js"
-			],
-			[
-				"na",
-				"static/templates/nag.html"
-			],
-			[
-				"html",
-				"static/templates/nag.html"
 			],
 			[
 				"bo",
@@ -1422,10 +1150,6 @@
 			[
 				"c",
 				"static/css/nag.css"
-			],
-			[
-				"nag.js",
-				"static/js/nag.js"
 			],
 			[
 				"ap",
@@ -1442,22 +1166,6 @@
 			[
 				"n",
 				"app/nag_mongo.rb"
-			],
-			[
-				"app",
-				"app.rb"
-			],
-			[
-				"nag",
-				"static/js/nag.js"
-			],
-			[
-				"css",
-				"static/css/nag.css"
-			],
-			[
-				"nah",
-				"static/templates/nag.html"
 			],
 			[
 				"the",
@@ -1478,10 +1186,6 @@
 			[
 				"htm",
 				"static/templates/nag.html"
-			],
-			[
-				"date",
-				"spec/parse_date.rb"
 			],
 			[
 				"dat",
@@ -1894,22 +1598,6 @@
 			[
 				"locat",
 				"static/javascript/location.js"
-			],
-			[
-				"sepc",
-				"static/SpecRunner.html"
-			],
-			[
-				"le",
-				"static/css/lib/leaflet.css"
-			],
-			[
-				"featu",
-				"features/dashboards.feature"
-			],
-			[
-				"steps",
-				"features/dashboard_steps.py"
 			]
 		],
 		"width": 0.0
@@ -1928,9 +1616,17 @@
 	},
 	"select_symbol":
 	{
-		"height": 367.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"",
+				"NagMongoClient"
+			],
+			[
+				"time",
+				"time"
+			],
 			[
 				"select",
 				"selectLayer"
@@ -2064,10 +1760,6 @@
 				"WFSService"
 			],
 			[
-				"",
-				"DistrictService"
-			],
-			[
 				"add",
 				"add_subcounties_to_district"
 			],
@@ -2080,7 +1772,7 @@
 				"has_households"
 			]
 		],
-		"width": 891.0
+		"width": 392.0
 	},
 	"settings":
 	{
