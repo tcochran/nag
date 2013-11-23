@@ -25,7 +25,7 @@ class NagMongoClient
           @db_connection
         end
 
-
+        # move into init db script
         if @db['counters'].find('_id' => 'taskId').count() == 0
           @db['counters'].insert({'_id' => 'taskId', seq: 0})
         end

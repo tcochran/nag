@@ -16,7 +16,7 @@ Nag.Task.prototype.calculateDeadlineInWords = function () {
     var basis = this.deadline.match(/minute/) ? "minute" : "day"
     var now = new Date();
     if (this.finished)
-        return "finished";
+        return "";
 
     var msec = this.deadlineDate - now;
     var minutes = Math.ceil(msec / 1000 / 60);

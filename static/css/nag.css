@@ -1,65 +1,114 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+body {
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 18px;
 }
 
-.container { background-color: yellow; padding-top:20px; }
+@media 
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+
+    .image {
+        background: url(/images/nag_logo.png) no-repeat;
+        background-size: 200px 126px;
+        width: 200px;
+        height: 126px;
+        display: inline-block;
+    }
+}
+
+@media 
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+
+    .diamond {
+        background: url(/images/diamond.png) no-repeat;
+        background-size: 39px 20px;
+        width: 39px;
+        height: 20px;
+        display: inline-block;
+    }
+}
+
+@charset "utf-8";
 
 @font-face {
-  font-family: 'adelle';
-  src: url('font/.ttf');
+  font-family: 'Muli';
+  src: url(/fonts/Muli-Regular.ttf);
+  font-weight: 400;
 }
 
-body {
-    font-family: Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+@font-face {
+  font-family: 'Muli';
+  src: url(/fonts/Muli-Light.ttf);
+  font-weight: 200;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Helvetica Neue";
-    /*font-weight: 500;*/
+h1 {
+    font-family: Muli;
+    text-transform: lowercase;
+    font-weight: 700;
+    font-size: 80px;
+    text-align: center;
 }
 
-body { background-color: yellow; }
-.jumbotron { 
-    background-color: #ffffef; 
+h2 {
+    font-family: Muli;
+    text-transform: lowercase;
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+}
+
+.container .jumbotron { 
     font-size: 18px;
-    padding: 20px;
-    margin-bottom: 16px;
+    padding: 20px;;
+    border-radius: 1px;
+    background-color: white;
+    margin-bottom: 0px;
 }
 
 .jumbotron .title { 
     margin: 0 0 0px 0px; 
     font-size: 52px;
+    
 }
 
-.container .jumbotron.title-bar {
-    padding-left: 40px;
-    padding-top: 10px;
+.title-bar {
+    padding: 10px;
+    text-align: center;
+
 }
-label { margin-right: 10px; font-weight: 400;}
-input { 
-    color: dodgerblue; border: 1px solid #DDD; padding: 4px 10px; font-weight: 500;
-    margin-right: 14px; 
-    }
+
+#task-section {
+    padding: 10px;
+}
+
+#task-section > div {
+    text-align: center;
+}
+
+#task-section .diamond {
+    margin-top: 10px
+}
+
+.container .jumbotron-form {
+    background-color: #f1f3f5;
+}
+
 a {
     margin-right: 14px;
 }
 
 ul li {
-    line-height: 32px;
+    line-height: 40px;
+    text-align: center;
 }
 ul {
     list-style-type: none;
-}
-
-.modal .modal-body button:hover {
-    color: magenta;
-    border-color: magenta;
-}
-
-.modal h2 {
-    color: magenta;
-    font-weight: normal;
 }
 
 ul {
@@ -72,68 +121,23 @@ ul .time {
     margin-right: 6px;
     font-size: 20px;
     font-weight: 500;
-    -webkit-font-smoothing: antialiased;
 
 }
 
-#task-section h2 {
-    display: block;
-    border-bottom: 1px solid #DDD;
-    font-size: 13px;
-    padding-left: 0px;
-    font-weight: normal;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    padding-bottom: 2px;
-    color: #AAA;
+
+.container .jumbotron.title-bar {
+    padding-left: 40px;
+    padding-top: 10px;
 }
 
-#task-section ul {
-    margin-left: 4px;
-}
+label { margin-right: 10px; font-weight: 400; }
 
-ul .deadline {
-    display: inline-block;
-    padding: 0;
-    font-size: 16px;
-    width: 160px;
-    /*font-style: italic;*/
+input { 
+    border: 1px solid #DDD; 
+    padding: 4px 10px; 
+    margin-right: 14px; 
 }
-
 
 ul li.finished .time {
     text-decoration: line-through;
-}
-
-::-webkit-input-placeholder { /* WebKit browsers */
-    font-weight: normal;
-}
-input :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #999;
-}
-input ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #999;
-}
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #999;
-}
-
-.btn-default {
-    color: #333;
-    background-color: transparent;
-    border-color: #ccc;
-    font-size: 16px;
-    font-weight: 200;
-    padding: 3px 8px;
-}
-
-.btn-default:hover {
-    background-color: transparent;
-    border-color: dodgerblue;
-    color: dodgerblue;
-    /*font-weight: normal;*/
-}
-
-.modal-backdrop.in {
-    opacity: 0.7;
 }
