@@ -1,4 +1,6 @@
 Nag = {}
+
+
 Nag.Task = function(taskResource) {
 
     angular.extend(taskResource, Nag.Task.prototype);

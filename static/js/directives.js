@@ -2,8 +2,14 @@ angular.module('nag')
 
 .directive('facebook', function(){
     return {
-        controller: function($scope, $resource) {
+        controller: function($scope, $resource, $location) {
 
+            var apps = {
+              'localhost': 467557013361958,
+              'cryptic-retreat-6207.herokuapp.com': 283610231789371
+            }
+            $scope.appId = apps[$location.host()]
+            
             var Logon = $resource("logon")
 
             $scope.facebookStatus = 'pending';
@@ -26,8 +32,10 @@ angular.module('nag')
 
         link: function(scope, element){
             window.fbAsyncInit = function() {
+
+
                 FB.init({
-                    appId      : '467557013361958',
+                    appId      : scope.appId,
                     status     : true, // check login status
                     cookie     : true, // enable cookies to allow the server to access the session
                     xfbml      : true  // parse XFBML
