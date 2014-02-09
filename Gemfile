@@ -12,3 +12,4 @@ gem 'thin'
 gem 'oj'
 gem "http_parser.rb", "~> 0.5.3"
 gem "em-websocket", "~> 0.5.0"
+gem "sinatra-contrib"

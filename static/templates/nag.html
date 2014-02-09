@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="nag" ng-controller="NagCtrl">
+<html lang="en" ng-app="nag">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,117 +13,32 @@
     
     <link href="/css/nag.css" rel="stylesheet">
   </head>
-  <body>
+  <body facebook>
+    <div id="fb-root"></div>
 
-
-
-    
-    
+    <div ng-include="'/templates/logon.html'" ></div>
     <div ng-include="'/templates/notifications.html'"></div>
 
-    <div class="container"  >
+    <div class="container" >
 
       <div class="title-bar" > 
-        <!-- <div class="image" ></div> -->
         <h1>NAG</h1>
-        <!-- <div class='diamond'></div> -->
       </div>
-
-      <div class="jumbotron jumbotron-form">
-        <form role="form" ng-submit="submit()" >
-            <div class="form-group">
-                <label for="task">I really should do this</label>
-                <input ng-model="task" name="task" type="text" placeholder="eg Timesheet">
-            </div>
-            <div class="form-group">
-                <label for="task">by the latest</label>
-                <input ng-model="deadline" name="task" type="text" placeholder="eg Friday" ></input>
-                <a href="#" ng-click="deadline = 'tomorrow';" >tomorrow</a>
-                <a href="#" ng-click="deadline = '2 days from now';" >2 days from now</a>
-                <a href="#" ng-click="deadline = 'next week';">next week</a>
-                <a href="#" ng-click="deadline = 'next month';">next month</a>
-            </div>
-            <div class="form-group">
-              <input type="submit" id="submit" value="Create Nag" class="btn btn-primary" />
-            </div>
-        </form>
+      <div ng-if="facebookStatus=='connected'" >
+        <div ng-include="'/templates/app.html'" ></div>
       </div>
-
-      <section ng-show="tasks.length > 0" ng-cloak id='task-section'>
-          <div ng-show='tasks.today().length > 0'>
-            <h2>today</h2>
-            <ul>
-              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.today() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-                <span class="deadline">{{task.deadlineInWords}}</span>
-                <span class="time" >{{task.task}}</span>
-                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
-              </li>
-            </ul>
-            <!-- <div class='diamond'></div> -->
-          </div>
-
-
-          <div ng-show='tasks.thisWeek().length > 0'>
-            <h2>this week</h2>
-            <ul>
-              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.thisWeek() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-                <span class="deadline">{{task.deadlineInWords}}</span>
-                <span class="time" >{{task.task}}</span>
-                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
-              </li>
-            </ul>
-            <!-- <div class='diamond'></div> -->
-          </div>
-          <div ng-show='tasks.nextWeek().length > 0'>
-            <h2>next week</h2>
-            <ul>
-              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextWeek() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-                <span class="deadline">{{task.deadlineInWords}}</span>
-                <span class="time" >{{task.task}}</span>
-                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
-              </li>
-            </ul>
-            <!-- <div class='diamond'></div> -->
-          </div>
-
-          <div ng-show='tasks.thisMonth().length > 0'>
-            <h2>this month</h2>
-            <ul>
-              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.thisMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-                <span class="deadline">{{task.deadlineInWords}}</span>
-                <span class="time" >{{task.task}}</span>
-                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
-              </li>
-            </ul>
-            <!-- <div class='diamond'></div> -->
-          </div>
-          <div ng-show='tasks.nextMonth().length > 0'>
-            <h2>next month</h2>
-            <ul>
-              <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}">
-                <span class="deadline">{{task.deadlineInWords}}</span>
-                <span class="time" >{{task.task}}</span>
-                <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-                <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>
-              </li>
-            </ul>
-            <!-- <div class='diamond'></div> -->
-          </div>
-
-
-
-          </ul>
-      </section>
     </div>
+
+
     <script src="/js/lib/angular.min.js"></script>
     <script src="/js/lib/angular-animate.min.js"></script>
     <script src="/js/lib/angular-resource.min.js"></script>
     <script src="/js/lib/jquery-2.0.3.min.js"></script>
     <script src="/js/nag.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/directives.js"></script>
     <script src="/js/lib/bootstrap.min.js"></script>    
+
+    
   </body>
 </html>

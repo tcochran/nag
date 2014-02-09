@@ -31,18 +31,36 @@ class NagMongoClient
         end
     end
 
-    def nags(query)
+    def nags(user_id, query)
         if (query[:deadline])
           puts query[:deadline].utc()
-          @db['nags'].find({deleted: false, "deadline_date" => {"$lt" => query[:deadline].utc} }, :sort => {'deadline_date' => -1}).to_a
+          @db['nags'].find({user_id: user_id, deleted: false, "deadline_date" => {"$lt" => query[:deadline].utc} }, :sort => {'deadline_date' => -1}).to_a
         else 
-          @db['nags'].find({deleted: false}, :sort => {'deadline_date' => -1}).to_a
+          @db['nags'].find({user_id: user_id, deleted: false}, :sort => {'deadline_date' => -1}).to_a
         end
+    end
+
+    def logon(user_id, params)
+
+      if (@db['users'].find_one({user_id: user_id}) == nil)
+        @db['users'].insert({user_id: user_id, facebook_user: params, last_logon: Time.now, toggles: [], admin: false})  
+      end
+
+      @db['users'].update({user_id: user_id}, {'$set' => { last_logon: Time.now }} )
+    end
+
+    def users()
+      @db['users'].find().to_a
+    end
+
+    def find_user(user_id)
+      @db['users'].find_one({user_id: user_id})
     end
 
     def init 
         @db['nags'].remove
         @db['counters'].remove
+        @db['users'].remove
         @db['counters'].insert(
        {
           _id: "taskId",
@@ -55,9 +73,6 @@ class NagMongoClient
     end
 
     def next_task_id
-
-
-
         result = @db['counters'].find_and_modify(
             {
                 query: { _id: 'taskId' },

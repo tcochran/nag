@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica Neue, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 @media 
@@ -51,36 +51,21 @@ h1 {
     font-family: Muli;
     text-transform: lowercase;
     font-weight: 700;
-    font-size: 80px;
+    font-size: 60px;
     text-align: center;
+    margin-top: 0px;
 }
 
 h2 {
-    font-family: Muli;
-    text-transform: lowercase;
-    font-weight: 700;
+    font-family: Helvetica Neue;
+    font-weight: 200;
     font-size: 26px;
     text-align: center;
 }
 
-.container .jumbotron { 
-    font-size: 18px;
-    padding: 20px;;
-    border-radius: 1px;
-    background-color: white;
-    margin-bottom: 0px;
-}
-
-.jumbotron .title { 
-    margin: 0 0 0px 0px; 
-    font-size: 52px;
-    
-}
-
 .title-bar {
-    padding: 10px;
     text-align: center;
-
+    padding-bottom: 4px;
 }
 
 #task-section {
@@ -95,12 +80,17 @@ h2 {
     margin-top: 10px
 }
 
-.container .jumbotron-form {
+.container form {
     background-color: #f1f3f5;
+    padding: 20px 0;
+    border-radius: 1px;
 }
 
 a {
     margin-right: 14px;
+    /*font-size: 18px;*/
+    font-weight: 200;
+    line-height: 2.1428571435;
 }
 
 ul li {
@@ -130,14 +120,73 @@ ul .time {
     padding-top: 10px;
 }
 
-label { margin-right: 10px; font-weight: 400; }
+label {  font-weight: 400; }
 
-input { 
+input.form-control { 
+    /*font-size: 18px;*/
     border: 1px solid #DDD; 
     padding: 4px 10px; 
     margin-right: 14px; 
+    border-radius: 0px;
+    line-height: 26px;
+    height: inherit;
 }
 
 ul li.finished .time {
     text-decoration: line-through;
+}
+
+.tags {
+    display: inline-block;
+    padding-left: 0;
+}
+
+.tags li {
+    display: inline-block;
+    margin-right: 6px;
+    font-style: italic;
+}
+
+.menu li a
+{
+    color: black;
+    font-weight: bold;
+}
+.menu li a.selected {
+    color:red;
+}
+
+span.nag-logo {
+    font-family: Muli;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    box-shadow: 0;
+}
+.modal-content {
+    border-radius: 0px;
+    box-shadow: none;
+    border: 1px solid #333;
+}
+
+.modal-content h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: 200;
+}
+
+.modal-content p {
+    font-size: 16px;
+    font-weight: 200; 
+    margin-bottom: 30px;
+}
+
+#logonModal .modal-body {
+    margin-bottom: 10px;
+}
+
+.modal-footer {
+    text-align: left;
 }

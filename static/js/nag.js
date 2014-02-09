@@ -87,6 +87,14 @@ Nag.TaskCollection.fromJson = function(tasksJson){
         });
     };
 
+    collection.filterByTag = function(tag) {
+        var filteredTasks = this.filter(function(task) {
+            return task.tags.indexOf(tag) != -1;
+        });
+
+        return Nag.TaskCollection.fromJson(filteredTasks);
+    }
+
     return collection;
 };
 
@@ -94,83 +102,4 @@ Nag.TaskCollection.expiredTasks = function(tasks) {
     return tasks.filter(function(task) {
         return task.hasExpired();
     });
-}
-
-angular.module('nag', ["ngResource"]).controller('NagCtrl', function($scope, $resource, $timeout) {
-
-    var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
-        'getAll': {
-            method: 'GET',
-            isArray: true
-        },
-    })
-
-    $scope.submit = function() {
-        var task = new Task({
-            task: $scope.task,
-            deadline: $scope.deadline
-        });
-        task.$save(loadTasks);
-    };
-
-    var loadTasks = function() {
-        return Task.getAll({}, function(tasksJson) {
-            $scope.tasks = Nag.TaskCollection.fromJson(tasksJson);
-            checkExpiredTasks();
-        });
-    };    
-
-    var updateDeadline = function() {
-        $scope.tasks.forEach(function(task) { 
-            task.deadlineInWords = task.calculateDeadlineInWords();
-        });
-    }
-
-    var checkExpiredTasks = function() {
-        if ($scope.tasks.expiredTasks().length > 0) {
-            $scope.expiredTasks = $scope.tasks.expiredTasks();
-        }
-        updateDeadline();
-
-        $timeout(function() {
-            checkExpiredTasks();    
-        }, 2000);
-    };
-
-    loadTasks();
-
-    $scope.task
-    
-    $scope.taskDone = function(task) {
-      task.finished = true;
-      task.$save();
-    }
-
-    $scope.taskDelete = function(task) {
-      task.deleted = true;
-      var index = $scope.tasks.indexOf(task);
-      $scope.tasks.splice(index, 1)
-      task.$save(); 
-    }
-
-    // var url = "https://accounts.google.com/o/oauth2/auth?reponse_type=token&client_id=912357933222.apps.googleusercontent.com"
-
-}).controller('ExpiredTasksCtrl', function ($scope) {
-    $scope.$watch('expiredTasks', function(tasks) {
-        if (tasks == null)
-            return;
-        if (tasks.length > 0 && $('#myModal').is(":hidden") ) {
-            $scope.notificationTasks = tasks.splice(0);
-
-            $('#myModal').modal({});        
-        }
-    })
-
-    $scope.hasExpiredTasks = function () {
-        if ($scope.notificationTasks == null)
-            return false;
-        return Nag.TaskCollection.expiredTasks($scope.notificationTasks).length > 0
-    }
-        
-});
-  
+};
