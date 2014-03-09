@@ -48,6 +48,11 @@ def base64_url_decode(str)
 FACEBOOK_SECRET = ENV['NAG_FACEBOOK_SECRET']
 
 def validate_request
+  if ENV['NAG_ENV'] == 'dev'
+    @user_id = 'joebloggs'
+    return true
+  end
+
   sr_key = cookies.keys.detect {|key| key =~ /^fbsr/ }
   first, second = cookies[sr_key].split(".")
   sig = base64_url_decode(first)
@@ -100,6 +105,7 @@ post '/logon' do
   validate_request
   data = JSON.parse request.body.read
   @nag_mongo.logon(@user_id, data)
+  {}
 end
 
 get '/users' do

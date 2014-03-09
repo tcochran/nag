@@ -2,7 +2,10 @@ angular.module('nag')
 
 .directive('facebook', function(){
     return {
-        controller: function($scope, $resource, $location) {
+        controller: function($scope, $resource, $location, Integrated) {
+            $scope.integrated = Integrated;
+            if (Integrated == false)
+                return;
 
             var apps = {
               'localhost': 467557013361958,
@@ -31,6 +34,8 @@ angular.module('nag')
         },
 
         link: function(scope, element){
+            if (!scope.integrated)
+                return;
             window.fbAsyncInit = function() {
 
 

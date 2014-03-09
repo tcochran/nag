@@ -60,7 +60,7 @@ h2 {
     font-family: Helvetica Neue;
     font-weight: 200;
     font-size: 26px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .title-bar {
@@ -72,13 +72,6 @@ h2 {
     padding: 10px;
 }
 
-#task-section > div {
-    text-align: center;
-}
-
-#task-section .diamond {
-    margin-top: 10px
-}
 
 .container form {
     background-color: #f1f3f5;
@@ -95,7 +88,7 @@ a {
 
 ul li {
     line-height: 40px;
-    text-align: center;
+    /*text-align: center;*/
 }
 ul {
     list-style-type: none;

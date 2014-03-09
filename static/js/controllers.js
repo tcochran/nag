@@ -1,6 +1,6 @@
 angular.module('nag', ["ngResource"])
 
-.controller('NagCtrl', function($scope, $resource, $timeout) {
+.controller('NagCtrl',function($scope, $resource, $timeout, Integrated) {
     $scope.tasks = [];
     var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
         'getAll': {
@@ -107,14 +107,21 @@ angular.module('nag', ["ngResource"])
     
 })
 
-.controller('LogonCtrl', function($scope) {
+.controller('LogonCtrl', function($scope, Integrated, $rootScope) {
+
+
     $scope.$watch('facebookStatus', function(newStatus, oldStatus) {
-        console.log('newStatus', newStatus)
+
         if (newStatus == 'not_authorized') {
             $('#logonModal').modal({});   
         } else if(newStatus == 'connected') {
             $('#logonModal').modal('hide');   
         }
     })
+
+    if (!Integrated)
+    {
+        $rootScope.facebookStatus = 'connected'
+    }
     
 });
