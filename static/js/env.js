@@ -1,2 +1,2 @@
 angular.module('nag')
-.constant('INTEGRATED', true)
+.constant('Integrated', true)
