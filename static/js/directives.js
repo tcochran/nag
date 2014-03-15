@@ -1,5 +1,22 @@
 angular.module('nag')
 
+.directive('taskList', function() {
+
+    return {
+        templateUrl: '/templates/task-list.html',
+        scope: {
+            tasks: '=tasks',
+            period: '@period'
+        },
+        restrict: 'A',
+        link: function(scope, elm, attrs) {
+            console.log(scope.tasks);
+            scope.filteredtasks = scope.tasks[scope.period];
+        }
+    }
+
+})
+
 .directive('facebook', function(){
     return {
         controller: function($scope, $resource, $location, Integrated) {

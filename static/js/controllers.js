@@ -35,7 +35,7 @@ angular.module('nag', ["ngResource"])
             var tasks = Nag.TaskCollection.fromJson(tasksJson);
             $scope.all_tasks = tasks;
             $scope.tasks = tasks;
-            checkExpiredTasks();
+            // checkExpiredTasks();
         });
     };    
 

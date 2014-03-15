@@ -7,7 +7,7 @@ require 'uri'
 require_relative "app/date_parser"
 require_relative "app/nag_mongo"
 set :session_secret, ENV['NAG_SESSION_SECRET']
-
+set :static_cache_control, [:public, :max_age => 0]
 enable :sessions
 
 include Mongo

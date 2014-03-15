@@ -45,6 +45,7 @@ Nag.Task.prototype.calculateDeadlineInWords = function () {
 Nag.TaskCollection = {}
 Nag.TaskCollection.fromJson = function(tasksJson){ 
     var collection = tasksJson.map(function(taskResource) { return Nag.Task(taskResource); });
+    // console.log("here!");
 
     var today = new Date();
     var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)

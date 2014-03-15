@@ -1,8 +1,16 @@
-<span class="deadline">{{task.deadlineInWords}}</span>
-<span class="time" >{{task.task}}</span>
+<div class='task-body'>
+  <span class="time" >{{task.task}}</span> 
 
-<ul ng-if='task.tags.length > 0' class="tags">
-  <li ng-repeat="tag in task.tags">#{{tag}}</li>
-</ul>
-<button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
-<button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>  
+  <div class='task-details'>
+    <span class="deadline">{{task.deadlineInWords}}</span>&nbsp;
+    <ul ng-if='task.tags.length > 0' class="tags">
+      <li ng-repeat="tag in task.tags">#{{tag}}</li>
+    </ul>
+
+  </div>
+</div>
+
+<div class='task-actions'>
+  <button ng-show="!task.finished && selected" type="button" ng-click="taskDone(task)" class="btn btn-default btn-finished">finished</button>
+  <button ng-show="selected" type="button" class="btn btn-default btn-delete" ng-click="taskDelete(task);">delete</button>  
+</div>
