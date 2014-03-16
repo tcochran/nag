@@ -90,12 +90,17 @@
         </div>
     </section>
 
-    <section class="menu col-md-2" ng-controller="TagFilterCtrl">
-      <h2>Tag</h2>
+    <section class="menu col-md-2" ng-controller="TagFilterCtrl" id='tag-section'>
+      <h2>tag</h2>
       <ul>
-        <li><a ng-class="{selected: Tag.selected == null}" ng-click="selectTag(null)" href="#">all</a></li>
+        
         <li ng-repeat="tag in all_tags | orderBy:'name'">
-          <a ng-class="{selected: Tag.selected.name == tag.name}" ng-click="selectTag(tag) " href="#">#{{tag.name}}</a>
+          <a ng-show='Tag.selected.name != tag.name' ng-class="{selected: Tag.selected.name == tag.name}" ng-click="selectTag(tag) " href="#">{{tag.name}}</a>
+          <span ng-show='Tag.selected.name == tag.name'>{{tag.name}}</span>
+        </li>
+
+        <li>
+          <a class='show-all' ng-class="{selected: Tag.selected == null}" ng-show="Tag.selected != null" ng-click="selectTag(null)" href="#">show all</a>
         </li>
       </ul>
     </section>
