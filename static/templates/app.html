@@ -93,9 +93,9 @@
     <section class="menu col-md-2" ng-controller="TagFilterCtrl">
       <h2>Tag</h2>
       <ul>
-        <li><a ng-class="{selected: Tag.selected == null}" ng-click="selectTag(tag)" href="#">all</a></li>
-        <li ng-repeat='tag in all_tags'>
-          <a ng-class="{selected: Tag.selected == tag}" ng-click="selectTag(tag) " href="#">#{{tag}}</a>
+        <li><a ng-class="{selected: Tag.selected == null}" ng-click="selectTag(null)" href="#">all</a></li>
+        <li ng-repeat="tag in all_tags | orderBy:'name'">
+          <a ng-class="{selected: Tag.selected.name == tag.name}" ng-click="selectTag(tag) " href="#">#{{tag.name}}</a>
         </li>
       </ul>
     </section>

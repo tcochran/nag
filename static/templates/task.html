@@ -4,7 +4,7 @@
   <div class='task-details'>
     <span class="deadline">{{task.deadlineInWords}}</span>&nbsp;
     <ul ng-if='task.tags.length > 0' class="tags">
-      <li ng-repeat="tag in task.tags">#{{tag}}</li>
+      <li ng-repeat="tag in task.tags | orderBy:'name'">#{{tag.name}}</li>
     </ul>
 
   </div>

@@ -14,7 +14,9 @@ angular.module('nag', ["ngResource"])
         var task = new Task({
             task: taskScope.task,
             deadline: taskScope.deadline,
-            tags: taskScope.tags.split(/\s+/)
+            tags: taskScope.tags.split(/\s+/).map(function(tag) { 
+                return { name: tag };
+            })
         });
         taskScope.task = "";
         taskScope.deadline = "";
@@ -99,14 +101,22 @@ angular.module('nag', ["ngResource"])
         $scope.filterTasks(tag); 
     };
 
-    $scope.$watch('tasks', function(newValue, oldValue, scope) {
-        $scope.all_tags = $scope.all_tasks.reduce(function(all_tasks, task) {
-            var new_tags = task.tags.filter(function(tag) { return all_tasks.indexOf(tag) == -1; });
-            return all_tasks.concat(new_tags);
+    $scope.$watch('all_tasks', function(newValue, oldValue, scope) {
+        if (newValue == null)
+            return;
+
+        var tags = $scope.all_tasks.reduce(function(all_tags, task) {
+            var new_tags = task.tags.filter(function(tag) { return !Nag.containsEqual(all_tags, tag); });
+            return all_tags.concat(new_tags);
         }, []);
+
+
+        $scope.all_tags = tags;
     });
     
 })
+
+
 
 .controller('LogonCtrl', function($scope, Integrated, $rootScope) {
 

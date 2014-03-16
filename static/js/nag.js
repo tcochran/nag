@@ -1,5 +1,10 @@
 Nag = {}
 
+Nag.containsEqual = function(collection, object) {
+    return collection.filter(function(item) {
+        return angular.equals(item, object);
+    }).length > 0;
+};
 
 Nag.Task = function(taskResource) {
 
@@ -13,6 +18,13 @@ Nag.Task = function(taskResource) {
 Nag.Task.prototype.hasExpired = function () {
     return !this.finished && this.deadlineDate <= new Date();
 };
+
+Nag.Task.prototype.hasTask = function(tag) {
+    return this.tags.filter(function(task_tag) {
+        return angular.equals(task_tag, tag);
+    }).length > 0;
+}
+
 
 Nag.Task.prototype.calculateDeadlineInWords = function () {
     var basis = this.deadline.match(/minute/) ? "minute" : "day"
@@ -92,7 +104,8 @@ Nag.TaskCollection.fromJson = function(tasksJson){
 
     collection.filterByTag = function(tag) {
         var filteredTasks = this.filter(function(task) {
-            return task.tags.indexOf(tag) != -1;
+            console.log(task);
+            return task.hasTask(tag);
         });
 
         return Nag.TaskCollection.fromJson(filteredTasks);
