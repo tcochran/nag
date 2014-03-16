@@ -2,6 +2,7 @@ angular.module('nag', ["ngResource"])
 
 .controller('NagCtrl',function($scope, $resource, $timeout, Integrated) {
     $scope.tasks = [];
+
     var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
         'getAll': {
             method: 'GET',
@@ -35,17 +36,17 @@ angular.module('nag', ["ngResource"])
             var tasks = Nag.TaskCollection.fromJson(tasksJson);
             $scope.all_tasks = tasks;
             $scope.tasks = tasks;
-            // checkExpiredTasks();
         });
     };    
 
     var updateDeadline = function() {
         $scope.tasks.forEach(function(task) { 
-            task.deadlineInWords = task.calculateDeadlineInWords();
+        task.deadlineInWords = task.calculateDeadlineInWords();
         });
     }
 
-    var checkExpiredTasks = function() {
+    var checkExpiredTasks = function() {   
+
         if ($scope.all_tasks.expiredTasks().length > 0) {
             $scope.expiredTasks = $scope.tasks.expiredTasks();
         }
@@ -99,7 +100,7 @@ angular.module('nag', ["ngResource"])
     };
 
     $scope.$watch('tasks', function(newValue, oldValue, scope) {
-        $scope.all_tags = $scope.tasks.reduce(function(all_tasks, task) {
+        $scope.all_tags = $scope.all_tasks.reduce(function(all_tasks, task) {
             var new_tags = task.tags.filter(function(tag) { return all_tasks.indexOf(tag) == -1; });
             return all_tasks.concat(new_tags);
         }, []);
