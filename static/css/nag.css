@@ -81,7 +81,7 @@ h2 {
 }
 
 #task-section .task-group {
-    width: 250px;
+    width: 150px;
     display: inline-block;  
     vertical-align: top;
 }
@@ -114,7 +114,7 @@ a {
 }
 
 .task-details {
-    font-size: 13px;
+    font-size: 14px;
 }
 ul {
     list-style-type: none;
@@ -128,7 +128,7 @@ ul .time {
     text-align: right;
     padding: 0;
     margin-right: 6px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 200;
 
 }
@@ -181,6 +181,21 @@ ul li.finished .time {
 
 #tag-section ul a.show-all {
     background-color: white;
+}
+
+#new-task-modal .modal-dialog {
+    width: 800px;
+
+}
+
+#new-task-modal .modal-dialog .modal-content{
+    width: 800px;
+    background-color: #f1f3f5;
+}
+
+#new-task-modal .modal-dialog .modal-body label {
+    font-size: 20px;
+    font-weight: 500px;
 }
 
 
@@ -241,4 +256,46 @@ span.nag-logo {
 
 #task-section > div > ul {
     padding-left: 26px
+}
+
+#tag-section {
+    margin-top:10px;
+    padding-top: 20px;
+    padding-left: 30px;
+    border-top: 2px solid #f1f3f5;
+    border-left: 2px solid #f1f3f5;
+}
+
+#task-section {
+    padding-top: 20px;
+    margin-top:10px;
+    border-top: 2px solid #f1f3f5;
+    /*border-left: 1px solid #DDD;*/
+}
+
+#right-side {
+    padding: 0px;
+}
+
+#actions {
+    padding: 10px;
+    font-size: 20px;
+    color: #3276b1;
+    /*font-weight: 500;*/
+    text-transform: lowercase;
+    vertical-align: middle;
+}
+
+#actions a {
+    line-height: 20px;
+}
+
+#actions div {
+    padding-bottom: 6px;
+}
+
+#actions span {
+    vertical-align: top;
+    padding-top: 4px;
+    font-size: 20px;
 }

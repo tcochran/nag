@@ -10,20 +10,7 @@ angular.module('nag', ["ngResource"])
         },
     })
 
-    $scope.submit = function(taskScope) {
-        var task = new Task({
-            task: taskScope.task,
-            deadline: taskScope.deadline,
-            tags: taskScope.tags.split(/\s+/).map(function(tag) { 
-                return { name: tag };
-            })
-        });
-        taskScope.task = "";
-        taskScope.deadline = "";
-        taskScope.tags = "";
 
-        task.$save(loadTasks);
-    };
 
     $scope.filterTasks = function(tag) {
         if (tag == null) {
@@ -33,7 +20,7 @@ angular.module('nag', ["ngResource"])
         }
     };
 
-    var loadTasks = function() {
+    $scope.loadTasks = function() {
         return Task.getAll({}, function(tasksJson) {
             var tasks = Nag.TaskCollection.fromJson(tasksJson);
             $scope.all_tasks = tasks;
@@ -59,7 +46,7 @@ angular.module('nag', ["ngResource"])
         }, 2000);
     };
 
-    loadTasks();
+    $scope.loadTasks();
     
     $scope.taskDone = function(task) {
       task.finished = true;
@@ -72,6 +59,38 @@ angular.module('nag', ["ngResource"])
       $scope.tasks.splice(index, 1)
       task.$save(); 
     }
+
+    $scope.showNewTaskModal = function() {
+        $('#new-task-modal').modal({});
+    }
+})
+
+.controller('NewTaskCtrl', function($scope, $resource){
+    console.log('create');
+    var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
+        'getAll': {
+            method: 'GET',
+            isArray: true
+        },
+    })
+
+    $scope.submit = function(taskScope) {
+        console.log('here')
+        console.log($scope.all_tasks);
+        var task = new Task({
+            task: taskScope.task,
+            deadline: taskScope.deadline,
+            tags: taskScope.tags.split(/\s+/).map(function(tag) { 
+                return { name: tag };
+            })
+        });
+        taskScope.task = "";
+        taskScope.deadline = "";
+        taskScope.tags = "";
+        console.log($scope.all_tasks);
+        task.$save($scope.loadTasks);
+    };
+    
 })
 
 .controller('ExpiredTasksCtrl', function ($scope) {
@@ -81,7 +100,7 @@ angular.module('nag', ["ngResource"])
         if (tasks.length > 0 && $('#myModal').is(":hidden") ) {
             $scope.notificationTasks = tasks.splice(0);
 
-            $('#myModal').modal({});        
+            $('#myModal').modal({});
         }
     })
 

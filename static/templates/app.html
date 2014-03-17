@@ -1,52 +1,8 @@
-<div ng-controller="NagCtrl" >
-  <div class='row' >
-    <form role="form" ng-submit="submit(this)" class="form-horizontal">
-        <div class="form-group">
-            <label for="task" class='col-md-3 control-label'>I really should do this</label>
-            <div class='col-md-4'>
-              <input class='form-control' ng-model="task" name="task" type="text" placeholder="eg Timesheet" tabindex="1">
-            </div>
-            <div class='col-md-4'>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="task" class='col-md-3 control-label'>by the latest</label>
-            <div class='col-md-3'>
-              <input class='form-control' ng-model="deadline" name="task" type="text" placeholder="eg Friday" tabindex="2"></input>
-            </div>
-            <div class='col-md-5'>
-              <a href="#" ng-click="deadline = 'tomorrow';" >tomorrow</a>
-              <a href="#" ng-click="deadline = '2 days from now';" >2 days from now</a>
-              <a href="#" ng-click="deadline = 'next week';">next week</a>
-              <a href="#" ng-click="deadline = 'next month';">next month</a>
-            </div>
-            
-        </div>
-        <div class="form-group">
-            <label for="task" class='col-md-3 control-label'></label>
-
-            <div class='col-md-4'>
-              <input class='form-control' ng-model="tags" name="tags" type="text" placeholder="Tags eg Work, Home" tabindex="3"></input>
-            </div>
-            <div class='col-md-4'>
-              <a href="#" >#work</a>
-              <a href="#" >#home</a>
-              <a href="#" >#important</a>
-            </div>
-        </div>  
-        <div class="form-group">
-          <label class="col-md-3 control-label"></label>
-          <div class="col-md-3">
-            <button type="submit" id="submit" value="Create Nag" class="btn btn-primary" tabindex="4">Create Nag</button>
-          </div>
-        </div>
-    </form>
-  </div>
-        <!-- </div> -->
+<div ng-controller="NagCtrl" id='dash'>
 
   <div class='row' ng-show="tasks.length > 0" >
 
-    <section ng-cloak id='task-section' class='col-md-10'>
+    <section ng-cloak id='task-section' class='col-md-offset-1 col-md-8'>
 
         <div ng-show='tasks.today().length > 0' >
           <div class='task-group'>
@@ -88,25 +44,32 @@
             <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}" ng-include="'/templates/task.html'"></li>
           </ul>
         </div>
-    </section>
+        <div id='actions'>
 
-    <section class="menu col-md-2" ng-controller="TagFilterCtrl" id='tag-section'>
-      <h2>tag</h2>
-      <ul>
-        
-        <li ng-repeat="tag in all_tags | orderBy:'name'">
-          <a ng-show='Tag.selected.name != tag.name' ng-class="{selected: Tag.selected.name == tag.name}" ng-click="selectTag(tag) " href="#">{{tag.name}}</a>
-          <span ng-show='Tag.selected.name == tag.name'>{{tag.name}}</span>
-        </li>
-
-        <li>
-          <a class='show-all' ng-class="{selected: Tag.selected == null}" ng-show="Tag.selected != null" ng-click="selectTag(null)" href="#">show all</a>
-        </li>
-      </ul>
+          <div class='task-group'>
+          </div>
+          <div class='task-list'>
+            <span class="glyphicon glyphicon-plus"></span> <a href='' ng-click='showNewTaskModal()'>Add New Task</a>
+          </div>
+        </div>
     </section>
-  </div>
-  
-  
+    <div class='col-md-2' id='right-side'>
+      <section class="menu " ng-controller="TagFilterCtrl" id='tag-section'>
+        <h2>tag</h2>
+        <ul>
+          
+          <li ng-repeat="tag in all_tags | orderBy:'name'">
+            <a ng-show='Tag.selected.name != tag.name' ng-class="{selected: Tag.selected.name == tag.name}" ng-click="selectTag(tag) " href="#">{{tag.name}}</a>
+            <span ng-show='Tag.selected.name == tag.name'>{{tag.name}}</span>
+          </li>
+
+          <li>
+            <a class='show-all' ng-class="{selected: Tag.selected == null}" ng-show="Tag.selected != null" ng-click="selectTag(null)" href="#">show all</a>
+          </li>
+        </ul>
+      </section>
+  </div> 
   <div ng-include="'/templates/notifications.html'"></div>
+  <div ng-include="'/templates/new_task.html'"></div>
 </div>
 
