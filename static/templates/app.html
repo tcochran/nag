@@ -1,5 +1,12 @@
 <div ng-controller="NagCtrl" id='dash'>
 
+  <div class="title-bar" > 
+    <h1>NAG</h1>
+    <div id='new-task-link'>
+      <span class="glyphicon glyphicon-plus"></span> <a href='' ng-click='showNewTaskModal()'>Add New Task</a>
+    </div>
+  </div>
+
   <div class='row' ng-show="tasks.length > 0" >
 
     <section ng-cloak id='task-section' class='col-md-offset-1 col-md-8'>
@@ -43,14 +50,6 @@
           <ul class='task-list'>
             <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks.nextMonth() | orderBy:'deadline_date'" class="{{task.finished ? 'finished': ''}}" ng-include="'/templates/task.html'"></li>
           </ul>
-        </div>
-        <div id='actions'>
-
-          <div class='task-group'>
-          </div>
-          <div class='task-list'>
-            <span class="glyphicon glyphicon-plus"></span> <a href='' ng-click='showNewTaskModal()'>Add New Task</a>
-          </div>
         </div>
     </section>
     <div class='col-md-2' id='right-side'>

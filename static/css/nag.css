@@ -52,8 +52,10 @@ h1 {
     text-transform: lowercase;
     font-weight: 700;
     font-size: 60px;
-    text-align: center;
+    text-align: left;
     margin-top: 0px;
+    padding-left: 100px; 
+    display: inline-block;
 }
 
 h2 {
@@ -64,7 +66,6 @@ h2 {
 }
 
 .title-bar {
-    text-align: center;
     padding-bottom: 4px;
 }
 
@@ -131,6 +132,16 @@ ul .time {
     font-size: 20px;
     font-weight: 200;
 
+}
+
+#new-task-link {
+    display: inline-block;
+        padding-left: 20px;
+    font-size: 20px;
+    color: #3276b1;
+    /*font-weight: 500;*/
+    text-transform: lowercase;
+    vertical-align: middle;
 }
 
 
@@ -259,7 +270,6 @@ span.nag-logo {
 }
 
 #tag-section {
-    margin-top:10px;
     padding-top: 20px;
     padding-left: 30px;
     border-top: 2px solid #f1f3f5;
@@ -268,7 +278,6 @@ span.nag-logo {
 
 #task-section {
     padding-top: 20px;
-    margin-top:10px;
     border-top: 2px solid #f1f3f5;
     /*border-left: 1px solid #DDD;*/
 }
