@@ -1,4 +1,5 @@
 angular.module('nag', ["ngResource"])
+    .config(function() { })
 
 .controller('NagCtrl',function($scope, $resource, $timeout, Integrated) {
     $scope.tasks = [];
@@ -111,9 +112,9 @@ angular.module('nag', ["ngResource"])
     };        
 })
 
-.controller('TagFilterCtrl', function($scope) {
+.controller('TagFilterCtrl', function($scope, $rootScope) {
 
-    $scope.Tag = {selected: null};
+    $rootScope.Tag = {selected: null};
 
     $scope.selectTag = function(tag) { 
         $scope.Tag.selected = tag;
