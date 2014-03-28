@@ -1,37 +1,34 @@
 <div class="modal fade" id="new-task-modal" ng-controller='NewTaskCtrl'>
-  <div class="modal-dialog">
-  <form role="form" ng-submit="submit(this)" class="form-horizontal">
-    <div class="modal-content">
-      <div class="modal-body">
-          <div class="form-group">
-              <label for="task" class='col-md-4 control-label'>I really should do this</label>
-              <div class='col-md-4'>
-                <input class='form-control' ng-model="task" name="task" type="text" placeholder="eg Timesheet" tabindex="1">
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="task" class='col-md-4 control-label'>by the latest</label>
-              <div class='col-md-3'>
-                <input class='form-control' ng-model="deadline" name="task" type="text" placeholder="eg Friday" tabindex="2"></input>
-              </div>
-              
-          </div>
-          <div class="form-group">
-              <label for="task" class='col-md-4 control-label'>tags</label>
+    <div class="modal-dialog">
+        <form role="form" class="form-horizontal">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="task" class='col-md-4 control-label'>I really should do this</label>
+                        <div class='col-md-4'>
+                            <input class='form-control' ng-model="task" name="task" type="text" placeholder="eg Timesheet" tabindex="1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="task" class='col-md-4 control-label'>by the latest</label>
+                        <div class='col-md-3'>
+                          <input class='form-control' ng-model="deadline" name="task" type="text" placeholder="eg Friday" tabindex="2"></input>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="task" class='col-md-4 control-label'>tags</label>
 
-              <div class='col-md-4 '>
-                <input class='form-control' ng-model="tags" name="tags" type="text" placeholder="eg Work, Home" tabindex="3"></input>
-              </div>
-          </div>  
-        
-
-      </div>
-      <div class="modal-footer text-right">
-        <button type="submit" id="submit" value="Create Nag" data-dismiss="modal" class="btn btn-primary text-right" tabindex="4">Create Nag</button>
-      </div>
-    </div><!-- /.modal-content -->
-
-  </div><!-- /.modal-dialog -->
-  </form>
+                        <div class='col-md-4 '>
+                          <input class='form-control' ng-model="tags" name="tags" type="text" placeholder="eg Work, Home" tabindex="3"></input>
+                        </div>
+                    </div>  
+                </div>
+                <div class="modal-footer text-right">
+                  <button type="submit" id="submit" value="Create Nag" data-dismiss="modal" ng-click='submitTask(this)' class="btn btn-primary text-right" tabindex="4">Create Nag</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </form>
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 

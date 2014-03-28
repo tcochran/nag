@@ -23,6 +23,7 @@ angular.module('nag', ["ngResource"])
 
     $scope.loadTasks = function() {
         return Task.getAll({}, function(tasksJson) {
+            console.log("load", tasksJson)
             var tasks = Nag.TaskCollection.fromJson(tasksJson);
             $scope.all_tasks = tasks;
             $scope.tasks = tasks;
@@ -75,7 +76,7 @@ angular.module('nag', ["ngResource"])
         },
     })
 
-    $scope.submit = function(taskScope) {
+    $scope.submitTask = function(taskScope) {
         console.log('here')
         console.log($scope.all_tasks);
         var task = new Task({
