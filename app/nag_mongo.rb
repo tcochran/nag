@@ -32,11 +32,21 @@ class NagMongoClient
     end
 
     def nags(user_id, query)
-        if (query[:deadline])
+        nags = if (query[:deadline])
           puts query[:deadline].utc()
           @db['nags'].find({user_id: user_id, deleted: false, "deadline_date" => {"$lt" => query[:deadline].utc} }, :sort => {'deadline_date' => -1}).to_a
         else 
           @db['nags'].find({user_id: user_id, deleted: false}, :sort => {'deadline_date' => -1}).to_a
+        end
+
+        nags.map do |nag|
+          {
+            'deadline' => nag['deadline'],
+            'task' => nag['task'],
+            "id" =>  nag["id"],
+            "deadline_date" => nag["deadline_date"].iso8601,
+            "tags" => nag["tags"]
+          }
         end
     end
 

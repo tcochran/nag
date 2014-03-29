@@ -10,7 +10,6 @@ angular.module('nag')
         },
         restrict: 'A',
         link: function(scope, elm, attrs) {
-            console.log(scope.tasks);
             scope.filteredtasks = scope.tasks[scope.period];
         }
     }

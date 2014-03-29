@@ -23,7 +23,6 @@ angular.module('nag', ["ngResource"])
 
     $scope.loadTasks = function() {
         return Task.getAll({}, function(tasksJson) {
-            console.log("load", tasksJson)
             var tasks = Nag.TaskCollection.fromJson(tasksJson);
             $scope.all_tasks = tasks;
             $scope.tasks = tasks;
@@ -68,7 +67,6 @@ angular.module('nag', ["ngResource"])
 })
 
 .controller('NewTaskCtrl', function($scope, $resource){
-    console.log('create');
     var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
         'getAll': {
             method: 'GET',
@@ -77,8 +75,6 @@ angular.module('nag', ["ngResource"])
     })
 
     $scope.submitTask = function(taskScope) {
-        console.log('here')
-        console.log($scope.all_tasks);
         var task = new Task({
             task: taskScope.task,
             deadline: taskScope.deadline,
@@ -89,7 +85,6 @@ angular.module('nag', ["ngResource"])
         taskScope.task = "";
         taskScope.deadline = "";
         taskScope.tags = "";
-        console.log($scope.all_tasks);
         task.$save($scope.loadTasks);
     };
     

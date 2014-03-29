@@ -10,6 +10,7 @@ Nag.Task = function(taskResource) {
 
     angular.extend(taskResource, Nag.Task.prototype);
     taskResource.deadlineDate = new Date(taskResource.deadline_date);
+
     taskResource.deadlineInWords = taskResource.calculateDeadlineInWords();
 
     return taskResource;
@@ -57,8 +58,6 @@ Nag.Task.prototype.calculateDeadlineInWords = function () {
 Nag.TaskCollection = {}
 Nag.TaskCollection.fromJson = function(tasksJson){ 
     var collection = tasksJson.map(function(taskResource) { return Nag.Task(taskResource); });
-    // console.log("here!");
-
     var today = new Date();
     var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
     var days = 8 - today.getDay(); 
@@ -79,6 +78,7 @@ Nag.TaskCollection.fromJson = function(tasksJson){
     };
 
     collection.thisWeek = function () {
+
         return this.filter(function(task) {
             return task.deadlineDate >= tomorrow && task.deadlineDate < thisWeekEnd;
         });
@@ -104,7 +104,6 @@ Nag.TaskCollection.fromJson = function(tasksJson){
 
     collection.filterByTag = function(tag) {
         var filteredTasks = this.filter(function(task) {
-            console.log(task);
             return task.hasTask(tag);
         });
 
