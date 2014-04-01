@@ -81,7 +81,7 @@ h2 {
 }
 
 #task-section .task-group {
-    width: 150px;
+    width: 100px;
     display: inline-block;  
     vertical-align: top;
 }
