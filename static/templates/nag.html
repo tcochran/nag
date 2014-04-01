@@ -1,11 +1,15 @@
 <div ng-controller="NagCtrl" id='dash'>
 
-  <div class="title-bar" > 
-    <h1>NAG</h1>
-    <div id='new-task-link'>
-      <span class="glyphicon glyphicon-plus"></span> <a href='' ng-click='showNewTaskModal()'>Add New Task</a>
+  <div class="row" > 
+    <div class="col-md-offset-1 col-md-8">
+      <h1>NAG</h1>
+      <div id='new-task-link'>
+        <span class="glyphicon glyphicon-plus"></span> <a href='' ng-click='showNewTaskModal()'>Add New Task</a>
+      </div>
     </div>
+
   </div>
+
   <div class='row' ng-if="tasks.length > 0" >
     <section ng-cloak id='task-section' class='col-md-offset-1 col-md-8'>
         <div id='selected-tag' ng-show='selectedTag != null'>
