@@ -1,0 +1,13 @@
+<h2>tag</h2>
+<ul>
+
+  <li ng-repeat="tag in tags | orderBy:'name'">
+
+
+    <a ng-show='selectedTag.name != tag.name' ng-click="selectTag(tag) " href="#">{{tag.name}}</a>
+    <span ng-show='selectedTag.name == tag.name'>{{tag.name}}</span>
+  </li>
+  <li>
+    <a class='show-all' ng-show="selectedTag != null" ng-click="selectTag(null)" href="#">show all</a>
+  </li>
+</ul>

@@ -1,5 +1,9 @@
-<pre>
-{{filteredtasks | json}}
-{{period}}
-</pre>
+<div ng-show="tasks.length > 0" >
+  <div class='task-group'>
+    <h2>{{title}}</h2>
+  </div>
+  <ul class='task-list'>
+    <li ng-mouseover="selected = true"  ng-mouseout="selected = false" ng-repeat="task in tasks | orderBy:'deadline_date' track by task.id" class="{{task.finished ? 'finished': ''}}" ng-include="'/templates/task.html'"></li>
+  </ul>
+</div>
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nag">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>nag</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/css/nag.css" rel="stylesheet">
+  </head>
+  <body facebook>
+    <div id="fb-root"></div>
+
+    <div ng-include="'/templates/logon.html'" ></div>
+    
+
+    <div class="container-fluid" >
+
+      
+      <div ng-if="facebookStatus=='connected'" >
+        <div ng-include="'/templates/nag.html'" ></div>
+      </div>
+    </div>
+
+
+    <script src="/js/lib/angular.min.js"></script>
+    <script src="/js/lib/angular-animate.min.js"></script>
+    <script src="/js/lib/angular-resource.min.js"></script>
+    <script src="/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="/js/nag.js"></script>
+
+    <script src="/js/controllers.js"></script>
+    <script src="/js/directives.js"></script>
+    <script src="/js/tag-directive.js"></script>
+    <script src="/js/task-list-directive.js"></script>
+    <script src="/js/task-filter.js"></script>
+    <script src="/js/tag-filter.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>    
+    <script src="/js/env.js"></script>
+
+    
+  </body>
+</html>

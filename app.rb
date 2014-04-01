@@ -8,6 +8,7 @@ require_relative "app/date_parser"
 require_relative "app/nag_mongo"
 set :session_secret, ENV['NAG_SESSION_SECRET']
 set :static_cache_control, [:public, :max_age => 0]
+set :public_folder, File.dirname(__FILE__) + '/static'
 enable :sessions
 
 include Mongo
@@ -18,8 +19,7 @@ require 'json'
 require 'cgi'
 require 'openssl'
 
-set :public_folder, File.dirname(__FILE__) + '/static'
-set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
+
 
 def get_connection
   return @db_connection if @db_connection
@@ -37,7 +37,7 @@ before do
 end
 
 get '/' do
-    send_file File.join(settings.public_folder, 'templates/nag.html')
+    send_file File.join(settings.public_folder, 'templates/index.html')
 end
 
 def base64_url_decode(str)
@@ -81,7 +81,7 @@ get '/tasks' do
       date = nil
     end
     content_type 'application/json'
-    @nag_mongo.nags(@user_id, {deadline: date}).to_json
+    @nag_mongo.nags(@user_id, {deadline: date}).to_json 
 end
 
 get '/tasks/expired' do 

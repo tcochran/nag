@@ -1,40 +1,25 @@
 angular.module('nag', ["ngResource"])
     .config(function() { })
 
-.controller('NagCtrl',function($scope, $resource, $timeout, Integrated) {
-    $scope.tasks = [];
-
-    var Task = $resource("tasks/:taskId", {taskId:'@id'}, {
-        'getAll': {
-            method: 'GET',
-            isArray: true
-        },
-    })
 
 
-
-    $scope.filterTasks = function(tag) {
-        if (tag == null) {
-            $scope.tasks = $scope.all_tasks;    
-        } else {
-            $scope.tasks = $scope.all_tasks.filterByTag(tag);
-        }
-    };
+.controller('NagCtrl',function($scope, $resource, $timeout, Integrated, TaskService) {
 
     $scope.loadTasks = function() {
-        return Task.getAll({}, function(tasksJson) {
-            var tasks = Nag.TaskCollection.fromJson(tasksJson);
-            $scope.all_tasks = tasks;
-            $scope.tasks = tasks;
+        TaskService.all().then(function(data){
+            $scope.all_tasks = data.tasks;
+            $scope.tasks = data.tasks;
+            $scope.tags = data.tags
         });
     };    
 
     var updateDeadline = function() {
         $scope.tasks.forEach(function(task) { 
-        task.deadlineInWords = task.calculateDeadlineInWords();
+            task.deadlineInWords = task.calculateDeadlineInWords();
         });
     }
 
+    // do something with this
     var checkExpiredTasks = function() {   
 
         if ($scope.all_tasks.expiredTasks().length > 0) {
@@ -86,8 +71,7 @@ angular.module('nag', ["ngResource"])
         taskScope.deadline = "";
         taskScope.tags = "";
         task.$save($scope.loadTasks);
-    };
-    
+    }; 
 })
 
 .controller('ExpiredTasksCtrl', function ($scope) {
@@ -108,32 +92,6 @@ angular.module('nag', ["ngResource"])
     };        
 })
 
-.controller('TagFilterCtrl', function($scope, $rootScope) {
-
-    $rootScope.Tag = {selected: null};
-
-    $scope.selectTag = function(tag) { 
-        $scope.Tag.selected = tag;
-        $scope.filterTasks(tag); 
-    };
-
-    $scope.$watch('all_tasks', function(newValue, oldValue, scope) {
-        if (newValue == null)
-            return;
-
-        var tags = $scope.all_tasks.reduce(function(all_tags, task) {
-            var new_tags = task.tags.filter(function(tag) { return !Nag.containsEqual(all_tags, tag); });
-            return all_tags.concat(new_tags);
-        }, []);
-
-
-        $scope.all_tags = tags;
-    });
-    
-})
-
-
-
 .controller('LogonCtrl', function($scope, Integrated, $rootScope) {
 
 
@@ -150,5 +108,22 @@ angular.module('nag', ["ngResource"])
     {
         $rootScope.facebookStatus = 'connected'
     }
-    
+})
+
+.service('TaskService', function($resource) {
+    var TaskResource = $resource("tasks")
+
+    this.all = function() {
+
+        return TaskResource.query().$promise.then(function(response) {
+            var tasks = Nag.TaskCollection.fromJson(response);
+
+            var tags = tasks.reduce(function(all_tags, task) {
+                var new_tags = task.tags.filter(function(tag) { return !Nag.containsEqual(all_tags, tag); });
+                return all_tags.concat(new_tags);
+            }, []);
+
+            return { tasks: tasks, tags: tags};
+        });
+    };
 });
