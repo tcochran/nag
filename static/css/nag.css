@@ -319,7 +319,7 @@ span.nag-logo {
 
 @media only screen and (max-width : 1000px) {
     span.nag-logo { font-size: 11px;}
-    h1 { font-size: 50px;}
+    h1 { font-size: 44px;}
     h2 { font-size: 18px;}
     ul .time { font-size: 18px; padding-bottom: 2px;}
     #task-section { padding: 10px 0px;}
@@ -327,7 +327,7 @@ span.nag-logo {
     #selected-tag h2 { margin-left: 106px; margin-bottom: 0px;}
     #task-section > div {margin-bottom: 8px;}
     #task-section > div > ul {
-        padding-left: 16px;
+        padding-left: 20px;
     }
 
     .task-list li {
