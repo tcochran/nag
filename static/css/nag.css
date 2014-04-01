@@ -235,22 +235,7 @@ span.nag-logo {
     font-weight: bold;
 }
 
-@media only screen and (max-width : 1000px) {
-    span.nag-logo { font-size: 11px;}
-    h1 { font-size: 50px;}
-    h2 { font-size: 18px;}
-    ul .time { font-size: 18px;}
 
-    #new-task-modal .modal-dialog .modal-body label {
-        font-size: 16px;
-        font-family: Muli;
-    }
-
-    input.form-control {
-        font-size: 13px;
-        line-height: 20px;
-    }
-}
 
 .modal-dialog {
     box-shadow: 0;
@@ -330,4 +315,28 @@ span.nag-logo {
 #selected-tag h2 {
     text-align: left;
     margin-left: 126px;
+}
+
+@media only screen and (max-width : 1000px) {
+    span.nag-logo { font-size: 11px;}
+    h1 { font-size: 50px;}
+    h2 { font-size: 18px;}
+    ul .time { font-size: 18px;}
+    #task-section { padding: 10px 0px;}
+    #task-section .task-group { width: 90px;}
+    #selected-tag h2 { margin-left: 106px; margin-bottom: 0px;}
+    #task-section > div {margin-bottom: 8px;}
+    #task-section > div > ul {
+        padding-left: 12px;
+    }
+
+    #new-task-modal .modal-dialog .modal-body label {
+        font-size: 16px;
+        font-family: Muli;
+    }
+
+    input.form-control {
+        font-size: 13px;
+        line-height: 20px;
+    }
 }
