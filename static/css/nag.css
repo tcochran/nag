@@ -321,13 +321,17 @@ span.nag-logo {
     span.nag-logo { font-size: 11px;}
     h1 { font-size: 50px;}
     h2 { font-size: 18px;}
-    ul .time { font-size: 18px;}
+    ul .time { font-size: 18px; padding-bottom: 2px;}
     #task-section { padding: 10px 0px;}
-    #task-section .task-group { width: 96px;}
+    #task-section .task-group { width: 96px; font-size: 18px; text-align: right;  }
     #selected-tag h2 { margin-left: 106px; margin-bottom: 0px;}
     #task-section > div {margin-bottom: 8px;}
     #task-section > div > ul {
         padding-left: 12px;
+    }
+
+    .task-list li {
+        padding-bottom: 3px;
     }
 
     #new-task-modal .modal-dialog .modal-body label {
