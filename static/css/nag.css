@@ -1,7 +1,9 @@
 body {
-    font-family: Muli, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 13px;
 }
+
+
 
 @media 
     only screen and (min--moz-device-pixel-ratio: 2),
@@ -235,6 +237,14 @@ span.nag-logo {
     font-weight: bold;
 }
 
+@media only screen and (max-width : 1000px) {
+    body{ background-color: pink;}
+    span.nag-logo { font-size: 11px;}
+    h1 { font-size: 50px;}
+    h2 { font-size: 18px;}
+    ul .time { font-size: 18px;}
+}
+
 .modal-dialog {
     box-shadow: 0;
 }
@@ -312,5 +322,5 @@ span.nag-logo {
 
 #selected-tag h2 {
     text-align: left;
-    margin-left: 176px;
+    margin-left: 126px;
 }
