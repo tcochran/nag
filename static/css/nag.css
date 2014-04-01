@@ -196,12 +196,10 @@ ul li.finished .time {
 }
 
 #new-task-modal .modal-dialog {
-    width: 800px;
 
 }
 
 #new-task-modal .modal-dialog .modal-content{
-    width: 800px;
     background-color: #f1f3f5;
 }
 
@@ -242,6 +240,16 @@ span.nag-logo {
     h1 { font-size: 50px;}
     h2 { font-size: 18px;}
     ul .time { font-size: 18px;}
+
+    #new-task-modal .modal-dialog .modal-body label {
+        font-size: 16px;
+        font-family: Muli;
+    }
+
+    input.form-control {
+        font-size: 13px;
+        line-height: 20px;
+    }
 }
 
 .modal-dialog {
